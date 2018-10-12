@@ -9,6 +9,7 @@ import * as fromActions from '../actions/login.actions';
 import { UserResponseModel } from '../../../shared/models/UserResponseModel';
 import { LoginResponseModel } from '../../../shared/models/LoginResponseModel';
 import * as notificationActions from '../actions/notification.actions';
+import * as fromRouterActions from '../../../@store/actions';
 
 @Injectable()
 export class LoginEffects {
@@ -49,5 +50,11 @@ export class LoginEffects {
           ];
         }));
     })
+  );
+
+  @Effect()
+  logout$: Observable<any> = this.actions.pipe(
+    ofType(fromActions.LOGOUT),
+    map(() => new fromRouterActions.Go({ path: ['login'] }))
   );
 }
