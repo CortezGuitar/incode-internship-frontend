@@ -9,9 +9,13 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class AuthService {
 
   constructor(private http: HttpClient) {
+  }
+
+  addUser(user: UserAuthModel): Observable<LoginResponseModel> {
+    return this.http.post<LoginResponseModel>(`${environment.baseUrl}/auth`, user);
   }
 
   logIn(user: UserAuthModel): Observable<LoginResponseModel> {

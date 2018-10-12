@@ -1,5 +1,5 @@
-import * as fromActions from '../actions/login.actions';
-import {UserAuthModel} from '../../../shared/models/UserAuthModel';
+import * as fromActions from '../actions/auth.actions';
+import { UserAuthModel } from '../../../shared/models/UserAuthModel';
 
 export class LoginState {
   user: UserAuthModel;
@@ -17,8 +17,33 @@ export const initialState: LoginState = {
   hasToken: false,
 };
 
-export function loginReducer(state: LoginState = initialState, action: fromActions.LoginActions): LoginState {
+export function loginReducer(state: LoginState = initialState, action: fromActions.AuthActions): LoginState {
   switch (action.type) {
+    case fromActions.REGISTER: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case fromActions.REGISTER_SUCCESS: {
+      return {
+        ...state,
+        hasToken: true,
+        loaded: true,
+        isAuthenticated: true,
+        user: action['payload']
+      };
+    }
+    case fromActions.REGISTER_FAILED: {
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        hasToken: false,
+        isAuthenticated: false,
+        user: null
+      };
+    }
     case fromActions.LOGIN: {
       return {
         ...state,

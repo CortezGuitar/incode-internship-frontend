@@ -1,0 +1,25 @@
+
+<div class="register-form-container">
+  <mat-card id="registerFormCard">
+    <form [formGroup]="registerFormGroup" (ngSubmit)="onSubmit()">
+      <div>
+        <h3 style="color: gray">Registration</h3>
+        <mat-form-field>
+          <input matInput placeholder="Login" formControlName="login" class="registerFormInput">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Password" formControlName="password" type="password" class="registerFormInput">
+        </mat-form-field>
+      </div>
+      <button 
+        mat-button 
+        type="submit" 
+        id="registerFormButton"
+        [disabled]="registerFormGroup.invalid"
+      >Sign up</button>
+    </form>
+  </mat-card>
+</div>
+

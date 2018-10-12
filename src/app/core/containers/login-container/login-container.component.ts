@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { Store, select } from '@ngrx/store';
 
-import { LogInAction } from '../../@store/actions/login.actions';
+import { LogInAction } from '../../@store/actions/auth.actions';
 import { selectIsAuthenticated } from '../../@store/selectors/login.selectors';
 import { UserAuthModel } from '../../../shared/models/UserAuthModel';
 import { State } from '../../../@store/reducers';

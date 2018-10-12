@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
-import { LogOutAction } from '../@store/actions/login.actions';
+import { LogOutAction } from '../@store/actions/auth.actions';
 import { State } from '../../@store/reducers';
 
 @Injectable()
